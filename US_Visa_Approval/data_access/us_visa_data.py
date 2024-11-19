@@ -9,7 +9,7 @@ from US_Visa_Approval.constants import DATABASE_NAME
 
 class USvisaData:
     """
-    This class helps to export entire MySQL table data as a pandas DataFrame.
+    This class helps to export entire MySQL data as a pandas DataFrame.
     """
 
     def __init__(self):
@@ -21,7 +21,7 @@ class USvisaData:
         except Exception as e:
             raise USvisaException(e, sys)
 
-    def export_table_as_dataframe(self, table_name: str, database_name: Optional[str] = None) -> pd.DataFrame:
+    def export_data_as_dataframe(self, dataset_name: str, database_name: Optional[str] = None) -> pd.DataFrame:
         """
         Exports the entire table as a pandas DataFrame.
         
@@ -32,9 +32,9 @@ class USvisaData:
         try:
             # Use the default database if none is provided
             database_name = database_name or DATABASE_NAME
-            
+
             # Construct the SQL query
-            query = f"SELECT * FROM {database_name}.{table_name}"
+            query = f"SELECT * FROM {database_name}.{dataset_name}"
             
             # Fetch data using SQLAlchemy
             with self.mysql_connect.engine.connect() as connection:
