@@ -1,6 +1,6 @@
 import os
 from dataclasses import dataclass
-from US_Visa_Approval.constants import *
+from src.US_Visa_Approval.constants import *
 
 
 

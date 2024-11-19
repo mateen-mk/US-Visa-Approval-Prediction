@@ -2,9 +2,9 @@ import sys
 import pandas as pd
 from typing import Optional
 
-from US_Visa_Approval.configuration.mysql_connection import MySQLConnect
-from US_Visa_Approval.exception import USvisaException
-from US_Visa_Approval.constants import DATABASE_NAME
+from src.US_Visa_Approval.configuration.mysql_connection import MySQLConnect
+from src.US_Visa_Approval.exception import USvisaException
+from src.US_Visa_Approval.constants import DATABASE_NAME
 
 
 class USvisaData:

@@ -4,12 +4,12 @@ import sys
 from pandas import DataFrame
 from sklearn.model_selection import train_test_split
 
-from US_Visa_Approval.constants import DATASET_NAME
-from US_Visa_Approval.entity.config_entity import DataIngestionConfig
-from US_Visa_Approval.entity.artifact_entity import DataIngestionArtifact
-from US_Visa_Approval.exception import USvisaException
-from US_Visa_Approval.logger import logging
-from US_Visa_Approval.data_access.us_visa_data import USvisaData
+from src.US_Visa_Approval.constants import DATASET_NAME
+from src.US_Visa_Approval.entity.config_entity import DataIngestionConfig
+from src.US_Visa_Approval.entity.artifact_entity import DataIngestionArtifact
+from src.US_Visa_Approval.exception import USvisaException
+from src.US_Visa_Approval.logger import logging
+from src.US_Visa_Approval.data_access.us_visa_data import USvisaData
 
 
 

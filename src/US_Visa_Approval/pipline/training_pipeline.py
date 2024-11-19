@@ -1,10 +1,10 @@
 import sys
-from US_Visa_Approval.exception import USvisaException
-from US_Visa_Approval.logger import logging
-from US_Visa_Approval.components.data_ingestion import DataIngestion
+from src.US_Visa_Approval.exception import USvisaException
+from src.US_Visa_Approval.logger import logging
+from src.US_Visa_Approval.components.data_ingestion import DataIngestion
 
-from US_Visa_Approval.entity.config_entity import DataIngestionConfig
-from US_Visa_Approval.entity.artifact_entity import DataIngestionArtifact
+from src.US_Visa_Approval.entity.config_entity import DataIngestionConfig
+from src.US_Visa_Approval.entity.artifact_entity import DataIngestionArtifact
 
 
 

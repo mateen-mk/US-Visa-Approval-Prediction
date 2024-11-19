@@ -1,7 +1,7 @@
 import sys
-from US_Visa_Approval.exception import USvisaException
-from US_Visa_Approval.logger import logging
-from US_Visa_Approval.constants import MYSQL_ENGINE_URL
+from src.US_Visa_Approval.exception import USvisaException
+from src.US_Visa_Approval.logger import logging
+from src.US_Visa_Approval.constants import MYSQL_ENGINE_URL
 
 import os
 from sqlalchemy import create_engine

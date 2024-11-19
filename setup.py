@@ -1,9 +1,29 @@
-from setuptools import setup, find_packages
+import setuptools
 
-setup(
-    name="US_Visa_Approval",
-    version="1.0.0",
-    author="Mateen Khan",
-    author_email="mateenmk2428@gmail.com",
-    packages=find_packages()
+with open('README.md','r', encoding='utf-8') as f:
+    long_description = f.read()
+
+
+__version__ = '1.0.0'
+
+REPO_NAME = 'US-Visa-Approval-Prediction'
+AUTHOR_USER_NAME = 'mateen-mk'
+SRC_REPO = 'US_Visa_Approval'
+AUTHOR_EMAIL = 'mateenmk2428@gmail.com'
+
+
+setuptools.setup(
+    name=SRC_REPO,
+    version=__version__,
+    author=AUTHOR_USER_NAME,
+    author_email=AUTHOR_EMAIL,
+    description="A python package for predicting US Visa Approval.",
+    long_description=long_description,
+    long_description_content="text/markdown",
+    url=f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}",
+    project_urls={
+        "Bug Tracker": f"https://github.com/{AUTHOR_USER_NAME}/{REPO_NAME}/issues",
+    },
+    package_dir={"": "src"},
+    packages=setuptools.find_packages(where="src")
 )
