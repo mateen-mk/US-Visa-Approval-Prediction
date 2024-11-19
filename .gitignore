@@ -163,5 +163,4 @@ cython_debug/
 
 
 .usvisaenv/*
-US_Visa_Approval.egg-info/*
 artifact/*
