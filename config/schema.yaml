@@ -33,7 +33,7 @@ drop_columns:
   - yr_of_estab
 
 # for data transformation
-num_features:
+scaling_columns:
   - no_of_employees
   - prevailing_wage
   - company_age
