@@ -23,3 +23,18 @@ class DataTransformationArtifact:
     transformed_object_file_path:str    # file path to preprocessing.pkl
     transformed_train_file_path:str     # file path to trained data in numpy array format (train.npy)
     transformed_test_file_path:str      # file path to test data in numpy array format (test.npy)
+
+
+# Classification Matrix Artifact
+@dataclass
+class ClassificationMetrixArtifact:
+    f1_score:float
+    precision_score:float
+    recall_score:float
+
+
+# Model Training Artifacts
+@dataclass
+class ModelTrainerArtifact:
+    trained_model_file_path:str 
+    metric_artifact:ClassificationMetrixArtifact
