@@ -38,3 +38,16 @@ class ClassificationMetrixArtifact:
 class ModelTrainerArtifact:
     trained_model_file_path:str 
     metric_artifact:ClassificationMetrixArtifact
+
+
+@dataclass
+class ModelEvaluationArtifact:
+    is_model_accepted:bool
+    changed_accuracy:float
+    evaluated_model_path:str 
+    trained_model_path:str
+
+
+@dataclass
+class ModelPusherArtifact:
+    model_pusher_path:str

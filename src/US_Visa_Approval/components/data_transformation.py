@@ -102,13 +102,18 @@ class DataTransformation:
         """
         try:
             if self.data_validation_artifact.validation_status:
+                
+                # Initialize preprocessor object
                 logging.info("Starting data transformation")
                 preprocessor = self.get_data_transformer_object()
                 logging.info("Got the preprocessor object")
 
+                
+                # Fetching the datasets
                 train_df = DataTransformation.read_data(file_path=self.data_ingestion_artifact.trained_file_path)
                 test_df = DataTransformation.read_data(file_path=self.data_ingestion_artifact.test_file_path)
 
+                # Seperating the independent features and dependent features from train dataset
                 input_feature_train_df = train_df.drop(columns=[TARGET_COLUMN], axis=1)
                 target_feature_train_df = train_df[TARGET_COLUMN]
 
@@ -128,7 +133,8 @@ class DataTransformation:
                     TargetValueMapping()._asdict()
                 )
 
-
+                
+                # Seperating the independent features and dependent features from train dataset
                 input_feature_test_df = test_df.drop(columns=[TARGET_COLUMN], axis=1)
 
                 target_feature_test_df = test_df[TARGET_COLUMN]
@@ -148,6 +154,8 @@ class DataTransformation:
 
                 logging.info("Got train features and test features of Testing dataset")
 
+
+                # Applying preprocessing object on train and test dataset
                 logging.info(
                     "Applying preprocessing object on training dataframe and testing dataframe"
                 )
@@ -164,6 +172,8 @@ class DataTransformation:
 
                 logging.info("Applying SMOTEENN on Training dataset")
 
+
+                # Resampling process
                 smt = SMOTEENN(sampling_strategy="minority")
 
                 input_feature_train_final, target_feature_train_final = smt.fit_resample(
@@ -180,6 +190,8 @@ class DataTransformation:
 
                 logging.info("Applied SMOTEENN on testing dataset")
 
+
+                # Data set into numpy array
                 logging.info("Created train array and test array")
 
                 train_arr = np.c_[

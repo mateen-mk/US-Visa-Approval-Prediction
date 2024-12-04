@@ -57,6 +57,27 @@ class DataTransformationConfig:
 @dataclass
 class ModelTrainerConfig:
     model_trainer_dir: str = os.path.join(training_pipeline_config.artifact_dir, MODEL_TRAINER_DIR_NAME)
-    trained_model_file_path: str = os.path.join(model_trainer_dir, MODEL_TRAINER_TRAINED_MODEL_DIR, MODEL_FILE_NAME)
+    trained_model_file_path: str = os.path.join(model_trainer_dir, MODEL_TRAINER_TRAINED_MODEL_DIR, MODEL_TRAINER_TRAINED_MODEL_NAME)
     expected_accuracy: float = MODEL_TRAINER_EXPECTED_SCORE
     model_config_file_path: str = MODEL_TRAINER_MODEL_CONFIG_FILE_PATH
+
+
+
+@dataclass
+class ModelEvaluationConfig:
+    model_evaluation_dir: str = os.path.join(training_pipeline_config.artifact_dir, MODEL_EVALUATION_DIR_NAME)
+    evaluated_model_file_path: str = os.path.join(model_evaluation_dir, MODEL_EVALUATION_EVALUATED_MODEL_DIR, MODEL_EVALUATION_EVALUATED_MODEL_NAME)
+    changed_threshold_score: float = MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
+
+
+
+@dataclass
+class ModelPusherConfig:
+    model_pusher_path: str = ModelEvaluationConfig.evaluated_model_file_path
+
+
+
+# @dataclass
+# class USvisaPredictorConfig:
+#     model_file_path: str = MODEL_FILE_NAME
+#     model_bucket_name: str = MODEL_BUCKET_NAME
