@@ -1,6 +1,5 @@
 import os
 from datetime import datetime, date
-from dataclasses import dataclass
 
 
 
@@ -24,6 +23,11 @@ CURRENT_YEAR = date.today().year
 PREPROCSSING_OBJECT_FILE_NAME = "preprocessing.pkl"
 SCHEMA_FILE_PATH = os.path.join("config", "schema.yaml")
 
+
+# AWS Constants
+AWS_ACCESS_KEY_ID_ENV_KEY = "AWS_ACCESS_KEY_ID"
+AWS_SECRET_ACCESS_KEY_ENV_KEY = "AWS_SECRET_ACCESS_KEY"
+REGION_NAME = "us-east-1"
 
 
 '''
@@ -53,21 +57,17 @@ DATA_TRANSFORMATION_TRANSFORMED_OBJECT_DIR: str = "transformed_object"
 # Model Training related constants
 MODEL_TRAINER_DIR_NAME: str = "model_trainer"
 MODEL_TRAINER_TRAINED_MODEL_DIR: str = "trained_model"
-MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model.pkl"
+MODEL_TRAINER_TRAINED_MODEL_NAME: str = "model_trained.pkl"
 MODEL_TRAINER_EXPECTED_SCORE: float = 0.6
 MODEL_TRAINER_MODEL_CONFIG_FILE_PATH: str = os.path.join("config", "model.yaml")
 
 
 # Model Evaluation related constants
-# MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
-# MODEL_BUCKET_NAME = "usvisa-model2024"
-# MODEL_PUSHER_S3_KEY = "model-registry"
-
-MODEL_EVALUATION_DIR_NAME: str = "model_evaluation"
-MODEL_EVALUATION_EVALUATED_MODEL_DIR: str = "evaluated_model"
-MODEL_EVALUATION_EVALUATED_MODEL_NAME: str = "model_evaluated.pkl"
+MODEL_BUCKET_NAME = "AWS_BUCKET_NAME"
+MODEL_FILE_NAME = "model.pkl"
+MODEL_PUSHER_S3_KEY = "model-registry"
 MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE: float = 0.02
 
 
-APP_HOST = "0.0.0.0"
+APP_HOST = "localhost"
 APP_PORT = 8080
