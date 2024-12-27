@@ -65,19 +65,20 @@ class ModelTrainerConfig:
 
 @dataclass
 class ModelEvaluationConfig:
-    model_evaluation_dir: str = os.path.join(training_pipeline_config.artifact_dir, MODEL_EVALUATION_DIR_NAME)
-    evaluated_model_file_path: str = os.path.join(model_evaluation_dir, MODEL_EVALUATION_EVALUATED_MODEL_DIR, MODEL_EVALUATION_EVALUATED_MODEL_NAME)
     changed_threshold_score: float = MODEL_EVALUATION_CHANGED_THRESHOLD_SCORE
+    bucket_name: str = MODEL_BUCKET_NAME
+    s3_model_key_path: str = MODEL_FILE_NAME
 
 
 
 @dataclass
 class ModelPusherConfig:
-    model_pusher_path: str = ModelEvaluationConfig.evaluated_model_file_path
+    bucket_name: str = MODEL_BUCKET_NAME
+    s3_model_key_path: str = MODEL_FILE_NAME
 
 
 
-# @dataclass
-# class USvisaPredictorConfig:
-#     model_file_path: str = MODEL_FILE_NAME
-#     model_bucket_name: str = MODEL_BUCKET_NAME
+@dataclass
+class USvisaPredictorConfig:
+    model_bucket_name: str = MODEL_BUCKET_NAME
+    model_file_path: str = MODEL_FILE_NAME
