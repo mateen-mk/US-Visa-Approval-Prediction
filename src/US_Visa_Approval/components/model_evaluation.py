@@ -7,8 +7,9 @@ from src.US_Visa_Approval.logger import logging
 import sys
 import pandas as pd
 from typing import Optional
+from src.US_Visa_Approval.entity.s3_estimator import USvisaEstimator
 from dataclasses import dataclass
-from src.US_Visa_Approval.entity.estimator import USvisaModel, USvisaEstimator
+from src.US_Visa_Approval.entity.estimator import USvisaModel
 from src.US_Visa_Approval.entity.estimator import TargetValueMapping
 
 @dataclass
@@ -30,26 +31,25 @@ class ModelEvaluation:
         except Exception as e:
             raise USvisaException(e, sys) from e
 
-
-
-    # IMPORTANT: check this out first 
     def get_best_model(self) -> Optional[USvisaEstimator]:
         """
         Method Name :   get_best_model
-        Description :   This function retrieves the best model from a local folder.
+        Description :   This function is used to get model in production
+        
+        Output      :   Returns model object if available in s3 storage
+        On Failure  :   Write an exception log and then raise an exception
         """
         try:
-            model_folder = self.model_eval_config.model_evaluation_dir
-            model_path = self.model_eval_config.evaluated_model_file_path
-            usvisa_estimator = USvisaEstimator(base_folder=model_folder, model_path=model_path)
+            bucket_name = self.model_eval_config.bucket_name
+            model_path=self.model_eval_config.s3_model_key_path
+            usvisa_estimator = USvisaEstimator(bucket_name=bucket_name,
+                                               model_path=model_path)
 
-            if usvisa_estimator.is_model_present():
+            if usvisa_estimator.is_model_present(model_path=model_path):
                 return usvisa_estimator
             return None
         except Exception as e:
-            raise USvisaException(e, sys)
-
-
+            raise  USvisaException(e,sys)
 
     def evaluate_model(self) -> EvaluateModelResponse:
         """
@@ -100,11 +100,11 @@ class ModelEvaluation:
         """  
         try:
             evaluate_model_response = self.evaluate_model()
-            evaluated_model_path = self.model_eval_config.evaluated_model_file_path
+            s3_model_path = self.model_eval_config.s3_model_key_path
 
             model_evaluation_artifact = ModelEvaluationArtifact(
                 is_model_accepted=evaluate_model_response.is_model_accepted,
-                evaluated_model_path=evaluated_model_path,
+                s3_model_path=s3_model_path,
                 trained_model_path=self.model_trainer_artifact.trained_model_file_path,
                 changed_accuracy=evaluate_model_response.difference)
 
