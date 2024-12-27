@@ -164,3 +164,4 @@ cython_debug/
 
 .usvisaenv/*
 artifact/*
+env_credentials.ps1
