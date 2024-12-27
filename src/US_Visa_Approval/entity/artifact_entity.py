@@ -44,10 +44,11 @@ class ModelTrainerArtifact:
 class ModelEvaluationArtifact:
     is_model_accepted:bool
     changed_accuracy:float
-    evaluated_model_path:str 
+    s3_model_path:str 
     trained_model_path:str
 
 
 @dataclass
 class ModelPusherArtifact:
-    model_pusher_path:str
+    bucket_name:str
+    s3_model_path:str 
